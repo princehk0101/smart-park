@@ -1,0 +1,37 @@
+# =========================
+# BACKEND (Django / Python)
+# =========================
+backend/venv/
+backend/.env
+backend/__pycache__/
+backend/**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# SQLite (safe to keep, even if unused)
+db.sqlite3
+
+# Django static / media
+staticfiles/
+media/
+
+# =========================
+# FRONTEND (React / Node)
+# =========================
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# =========================
+# LOGS
+# =========================
+*.log
+
+# =========================
+# IDE / OS
+# =========================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
