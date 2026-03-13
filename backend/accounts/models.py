@@ -51,7 +51,7 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['phone_number']
 
-    objects = UserManager()  # 🔥 MOST IMPORTANT LINE
+    objects = UserManager()  
 
     def __str__(self):
         return f"{self.email} ({self.role})"

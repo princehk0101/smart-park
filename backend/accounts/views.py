@@ -13,14 +13,14 @@ from .serializers import (
 )
 
 
-# ---------- REGISTER ----------
+# REGISTER
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]
 
 
-# ---------- LOGIN (ONLY TOKENS) ----------
+# LOGIN (ONLY TOKENS)
 class LoginView(generics.GenericAPIView):
     serializer_class = LoginSerializer
     permission_classes = [AllowAny]
@@ -38,7 +38,7 @@ class LoginView(generics.GenericAPIView):
         }, status=status.HTTP_200_OK)
 
 
-# ---------- PROFILE ----------
+#  PROFILE 
 class ProfileView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -53,7 +53,7 @@ class ProfileView(APIView):
         })
 
 
-# ---------- FORGOT PASSWORD (OTP) ----------
+# FORGOT PASSWORD (OTP)
 class ForgotPasswordView(APIView):
     permission_classes = [AllowAny]
 
@@ -64,7 +64,7 @@ class ForgotPasswordView(APIView):
         return Response({"message": "OTP sent to email"}, status=status.HTTP_200_OK)
 
 
-# ---------- VERIFY OTP ----------
+#  VERIFY OTP 
 class VerifyOTPView(APIView):
     permission_classes = [AllowAny]
 

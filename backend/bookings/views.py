@@ -46,7 +46,7 @@ class CreateBookingView(APIView):
         start_time = request.data.get('start_time')
         end_time = request.data.get('end_time')
 
-        # 1️⃣ required field validation
+        # 1️ required field validation
         if not slot_id:
             return Response({"error": "slot is required"}, status=400)
 
@@ -56,13 +56,13 @@ class CreateBookingView(APIView):
         if not date or not start_time or not end_time:
             return Response({"error": "date, start_time and end_time required"}, status=400)
 
-        # 2️⃣ slot existence check
+        # 2 slot existence check
         try:
             slot = Slot.objects.get(id=slot_id)
         except Slot.DoesNotExist:
             return Response({"error": "Invalid slot id"}, status=404)
 
-        # 3️⃣ slot already booked?
+        # 3 slot already booked?
         conflict = Booking.objects.filter(
             slot=slot,
             date=date,
@@ -77,7 +77,7 @@ class CreateBookingView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        # 🚗 same vehicle double booking check
+        #  same vehicle double booking check
         vehicle_conflict = Booking.objects.filter(
             vehicle_number=vehicle_number,
             date=date,
@@ -92,7 +92,7 @@ class CreateBookingView(APIView):
                 status=400
             )
 
-        # 4️⃣ create booking
+        # 4️ create booking
         booking = Booking.objects.create(
             user=request.user,
             slot=slot,
